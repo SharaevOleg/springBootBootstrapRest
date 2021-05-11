@@ -20,13 +20,13 @@ public class RoleDaoImp implements RoleDao{
         this.entityManager = entityManager;
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public void newRole(Set<Role> roles) {
         roles.forEach(role -> entityManager.persist(role));
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public Set<Role> getRole() {
         Set<Role> roleSet = new HashSet<>();

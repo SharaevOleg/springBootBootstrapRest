@@ -18,32 +18,32 @@ public class UserDaoImp implements UserDao{
         this.entityManager = entityManager;
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public void create(User user) {
         entityManager.persist(user);
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public User getUser(Long id) {
         return entityManager.find(User.class, id);
     }
 
-    @Transactional
+//    @Transactional
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
         return entityManager.createQuery("select user From User user").getResultList();
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public void update(User user) {
         entityManager.merge(user);
     }
 
-    @Transactional
+//    @Transactional
     @Override
     public void remove(Long id) {
         entityManager.remove(getUser(id));
