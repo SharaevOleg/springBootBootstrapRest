@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>User panel</title>
+    <style>
+        h2, a {
+            padding-left: 25px;
+            color: #53b1af;
+        }
+
+        table {
+            width: 50%; /* Ширина таблицы */
+            background: white; /* Цвет фона таблицы */
+            color: white; /* Цвет текста */
+            padding-left: 20px;
+            border-spacing: 5px; /* Расстояние между ячейками */
+            text-align: center;
+        }
+
+        td, th {
+            background: #53b1af; /* Цвет фона ячеек */
+            padding: 5px; /* Поля вокруг текста */
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+<h2> User</h2>
+<br/>
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Password</th>
+            <th>Roles</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:utext="${user.name}">...</td>
+            <td th:utext="${user.email}">...</td>
+            <td th:utext="${user.password}">...</td>
+            <td th:utext="${user.roles}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <style>
+        h2, a, fieldset {
+            padding-left: 25px;
+            color: #53b1af;
+        }
+
+        table {
+            width: 50%; /* Ширина таблицы */
+            background: white; /* Цвет фона таблицы */
+            color: white; /* Цвет текста */
+            padding-left: 20px;
+            border-spacing: 5px; /* Расстояние между ячейками */
+            text-align: center;
+        }
+
+        td, th {
+            background: #53b1af; /* Цвет фона ячеек */
+            padding: 5px; /* Поля вокруг текста */
+        }
+
+        button {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <a th:href="@{/users}"> User info </a>
+    <br/>
+
+    <a th:href="@{/logout}"> Logout </a>
+</div>
+
+
+<div>
+    <h2>Users table</h2>
+    <table>
+        <tr>
+            <th>UserName</th>
+            <th>Mail</th>
+            <th>Password</th>
+            <th>Roles</th>
+        </tr>
+        <th:block th:each="user : ${listUsers}">
+            <tr>
+                <td th:utext="${user.name}"></td>
+                <td th:utext="${user.email}"></td>
+                <td th:utext="${user.password}"></td>
+                <td>
+                    <th:block th:each="role : ${user.roles}">
+                        <a style="color: white" th:text="${role.role} + ' / '"></a>
+                    </th:block>
+                </td>
+
+                <td>
+                    <form th:action="@{/updateUser/{id}(id=${user.id})}" method="post" th:object="${user}">
+                        <button type="submit">Edit</button>
+                    </form>
+
+                    <form th:action="@{/delete/{id}(id=${user.id})}" method="post" th:object="${user}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+
+<br/>
+
+<div>
+    <form th:action="@{/createUser}" method="post" th:object="${newUser}">
+        <fieldset style="border:0 none">
+            <legend>Create new User</legend>
+            <p>
+                <label th:for="name">UserName <em>...</em></label>
+                <input type="text" name="name" th:id="name">
+            </p>
+
+            <p>
+                <label th:for="email">Mail <em>...</em></label>
+                <input type="text" name="email" th:id="email">
+            </p>
+
+            <p>
+                <label th:for="password">Password <em>...</em></label>
+                <input type="text" name="password" th:id="password">
+            </p>
+
+            <p>
+                <label th:for="roles">Roles </label>
+                <select multiple name="roles" size="3" th:id="roles" required>
+                    <option disabled>Select roles</option>
+                    <option th:each="role : ${allRoles}" th:value="${role}" th:text="${role.role}"></option>
+                </select>
+            </p>
+        </fieldset>
+        <div style="padding-left: 25px">
+        <button type="submit">Create user</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
