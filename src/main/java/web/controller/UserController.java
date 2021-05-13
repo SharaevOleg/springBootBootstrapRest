@@ -10,7 +10,7 @@ import web.model.User;
 import web.service.UserService;
 
 @Controller
-//@RequestMapping("/")
+
 public class UserController {
 
     private UserService userService;
