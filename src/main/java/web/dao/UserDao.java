@@ -1,7 +1,6 @@
 package web.dao;
 
 import web.model.User;
-
 import java.util.List;
 
 public interface UserDao {
@@ -10,5 +9,5 @@ public interface UserDao {
     List<User> getAllUsers();
     void update(User user);
     void remove(Long id);
-    User getUserByName(String name);
+    User getUserByMail(String email);
 }

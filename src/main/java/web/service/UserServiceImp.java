@@ -53,8 +53,8 @@ public class UserServiceImp implements UserService {
     }
     @Transactional
     @Override
-    public User getUserByName(String name) {
-        return userDao.getUserByName(name);
+    public User getUserByMail(String email) {
+        return userDao.getUserByMail(email);
     }
     @Transactional
     @Override

@@ -12,7 +12,7 @@ public interface UserService {
     List<User> getAllUsers();
     void update(User user);
     void remove(Long id);
-    User getUserByName(String name);
+    User getUserByMail(String email);
     void newRole(Set<Role> roles);
     Set<Role> getRole();
 }
