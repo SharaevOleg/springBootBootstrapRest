@@ -4,12 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
-    <style>
-        a, label, input, legend {
-            padding-left: 25px;
-            color: #53b1af;
-        }
-    </style>
 </head>
 <body>
 <div>
@@ -20,24 +14,19 @@
     <a th:href="@{/logout}">Logout</a>
 </div>
 
-<br/>
-
 <form th:action="@{/updateUser}" method="post" th:object="${user}">
     <input type="hidden" name="id" th:value="${user.id}">
 
-
-    <fieldset style="border:0 none">
-        <legend>EDIT USER</legend>
-        <p>
-            <label th:for="name">UserName</label>
-            <input type="text" name="name" th:id="name" th:value="${user.name}">
-        </p>
-
+    <fieldset>
+        <legend>Edit user</legend>
         <p>
             <label th:for="email">Mail</label>
             <input type="text" name="email" th:id="email" th:value="${user.email}">
         </p>
-
+        <p>
+            <label th:for="name">UserName</label>
+            <input type="text" name="name" th:id="name" th:value="${user.name}">
+        </p>
         <p>
             <label th:for="password">Password</label>
             <input type="text" name="password" th:id="password" th:value="${user.password}">
@@ -51,10 +40,7 @@
         </p>
     </fieldset>
 
-    <div style="padding-left: 25px">
-        <button type="submit">Edit user</button>
-    </div>
-
+    <input type="submit" value="Edit user">
 </form>
 </body>
 </html>
