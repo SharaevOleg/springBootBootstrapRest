@@ -27,8 +27,8 @@ public class UserController {
 
     @GetMapping(value = {"/", "/users"})
     public String getUser(ModelMap model) {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("users", userDetails);
+        User thisUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("thisUser", thisUser);
         return "users";
     }
 
@@ -86,7 +86,7 @@ public class UserController {
         }
 
         Set<Role> roleSet = new HashSet<>();
-        if (role.contains("USER")){
+        if (role.contains("USER")) {
             roleSet.add(new Role("USER"));
             user.setRoles(roleSet);
         }

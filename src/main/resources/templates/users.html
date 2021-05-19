@@ -15,7 +15,7 @@
 <header>
     <nav class="navbar navbar-dark bg-dark flex-md-nowrap p-1 shadow">
         <span class="navbar-text col-md-10" style="color: white"
-              th:text="${user.email} + ' with roles: ' + ${#strings.arrayJoin(user.roles, ' ')}"></span>
+              th:text="${thisUser.email} + ' with roles: ' + ${#strings.arrayJoin(thisUser.roles, ' ')}"></span>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" style="color: white" th:href="@{/logout}">Logout</a>
@@ -57,12 +57,12 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td th:utext="${user.id}"></td>
-                                        <td th:utext="${user.firstName}"></td>
-                                        <td th:utext="${user.lastName}"></td>
-                                        <td th:utext="${user.age}"></td>
-                                        <td th:utext="${user.email}"></td>
-                                        <td th:utext="${#strings.arrayJoin(user.roles, ' ')}"></td>
+                                        <td th:utext="${thisUser.id}"></td>
+                                        <td th:utext="${thisUser.firstName}"></td>
+                                        <td th:utext="${thisUser.lastName}"></td>
+                                        <td th:utext="${thisUser.age}"></td>
+                                        <td th:utext="${thisUser.email}"></td>
+                                        <td th:utext="${#strings.arrayJoin(thisUser.roles, ' ')}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
