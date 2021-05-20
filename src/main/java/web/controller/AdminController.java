@@ -5,10 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import web.model.Role;
 import web.model.User;
 import web.service.UserService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 //@RequestMapping("/v1")
@@ -34,6 +36,11 @@ public class AdminController {
     @GetMapping("/getUser/{id}")
     public User getUserById(@PathVariable(name = "id") Long id) {
         return userService.getUser(id);
+    }
+
+    @GetMapping("/allRoles")
+    public Set<Role> allRoles() {
+        return userService.getRole();
     }
 
     @PostMapping("/addUser")
