@@ -11,7 +11,7 @@ import web.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+//@RequestMapping("/v1")
 public class AdminController {
 
     private final UserService userService;

@@ -4,10 +4,11 @@ function getUser() {
 
     fetch(url).then((res) => res.json())
         .then((user) => {
-            let userRoles = "";
-            for (let i = 0; i < user.roles.length; i++) {
-                userRoles += `${user.roles[i].role} `
-            }
+            let userRoles = user.roles.map((item) => item.role).join(" ");
+            //     "";
+            // for (let i = 0; i < user.roles.length; i++) {
+            //     userRoles += `${user.roles[i].role} `
+            // }
 
             let output = "<tr>";
             output += `
